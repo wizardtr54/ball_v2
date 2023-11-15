@@ -1,2 +1,3 @@
 import ursina
-import costomtkinter
+import customtkinter as Ctk
+

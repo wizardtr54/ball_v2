@@ -47,7 +47,7 @@ def play():
 
     # define game variables
     cols = 5
-    rows = 6
+    rows = 3
     clock = pygame.time.Clock()
     fps = 120
     live_ball = False
@@ -277,6 +277,7 @@ def play():
             if event.type == pygame.KEYDOWN:
                 if event.key==pygame.K_ESCAPE:
                     pygame.quit()
+                    sys.exit(0)#add pause later
                 else: 
                     pass
             if event.type == pygame.MOUSEBUTTONDOWN and live_ball == False:

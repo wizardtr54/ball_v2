@@ -8,7 +8,7 @@ resolution="500x500"
 root.geometry(resolution)
 root.title("GOD DAMNIT")
 BackgroundMainMenu=PhotoImage(file = "assets/ball2.png")
-
+#test
 label1 = Label( root, image = BackgroundMainMenu) 
 label1.place(x = 0, y = 0) 
   
@@ -29,7 +29,7 @@ def play():
     # define font
     font = pygame.font.SysFont('typewriter', 70)
     #background image
-    imp = pygame.image.load(r"assets\ball2.png").convert_alpha() 
+    imp = pygame.image.load(r"assets/ball2.png").convert_alpha() 
     # paint screen one time
     pygame.display.flip()
     status = True
@@ -47,7 +47,7 @@ def play():
 
     # define game variables
     cols = 5
-    rows = 3
+    rows = 6
     clock = pygame.time.Clock()
     fps = 120
     live_ball = False

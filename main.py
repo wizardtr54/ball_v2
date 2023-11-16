@@ -305,7 +305,7 @@ button1.pack()
 button2 = Ctk.CTkButton(frame1, text = "Start",command=play) 
 button2.pack() 
   
-button3 = Button( frame1, text = "Reset") 
+button3 = Ctk.CTkButton( frame1, text = "Reset") 
 button3.pack()
 
 root.mainloop()

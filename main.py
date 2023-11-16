@@ -1,9 +1,10 @@
-import tkinter as tk,sys
+import tkinter as tk,sys,json
 import customtkinter as Ctk
 from tkinter import *
+from customtkinter import *
 import pygame,sys
 from pygame.locals import *
-root = Ctk.CTk()
+root = CTk()
 resolution="500x500"
 root.geometry(resolution)
 root.title("GOD DAMNIT")
@@ -11,18 +12,32 @@ BackgroundMainMenu=PhotoImage(file = "assets/ball2.png")
 #test
 label1 = Label( root, image = BackgroundMainMenu) 
 label1.place(x = 0, y = 0) 
+
+#data
+data={
+        'screen_width':1280,
+        'screen_height':720,
+        'speed':60
+    }
   
 label2 = Label( root, text = "Welcome") 
 label2.pack(pady = 50) 
 # all the calls
 def button_exit():
+    with open('settings.txt','w') as setfile:
+        json.dump(data,setfile)
     sys.exit(0)
 
 def play():
+    data={'screen_width':1280,'screen_height':720,'speed':60}    
+    try:
+        with open('settings.txt') as setfile:
+            data=json.load(setfile)
+    except:
+        pass
     pygame.init()
-
-    screen_width = 1280
-    screen_height = 720
+    screen_width = data['screen_width']
+    screen_height = data['screen_height']
     screen = pygame.display.set_mode((screen_width,screen_height))
     pygame.display.set_caption('Brick-slayer')
 
@@ -49,7 +64,7 @@ def play():
     cols = 5
     rows = 6
     clock = pygame.time.Clock()
-    fps = 120
+    fps = data['speed']
     live_ball = False
     game_over = 0
 
@@ -276,6 +291,8 @@ def play():
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key==pygame.K_ESCAPE:
+                    with open('settings.txt','w') as setfile:
+                        json.dump(data,setfile)
                     pygame.quit()
                     sys.exit(0)#add pause later
                 else: 
@@ -286,6 +303,10 @@ def play():
                 player_paddle.reset()
                 wall.create_wall()
             if event.type == pygame.QUIT:
+                with open('settings.txt','w') as setfile:
+                    json.dump(data,setfile)
+
+
                 pygame.quit()
                 sys.exit()
 

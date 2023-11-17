@@ -5,7 +5,7 @@ from customtkinter import *
 import pygame,sys
 from pygame.locals import *
 
-#data
+#data defaults
 data={
         'screen_width':1280,
         'screen_height':720,
@@ -15,7 +15,8 @@ try:
     with open('settings.txt') as setfile:
         data=json.load(setfile)
 except:
-    pass
+    with open('settings.txt','w') as setfile:
+        json.dump(data,setfile)
 
 root = CTk()
 resolution=str(str(data['screen_width'])+'x'+str(data['screen_height']))
@@ -303,7 +304,8 @@ def play():
                     pygame.quit()
                     sys.exit(0)#add pause later
                 else: 
-                    pass
+                    with open('settings.txt','w') as setfile:
+                        json.dump(data,setfile)
             if event.type == pygame.MOUSEBUTTONDOWN and live_ball == False:
                 live_ball = True
                 ball.reset(player_paddle.x + (player_paddle.width // 2), player_paddle.y - player_paddle.height)

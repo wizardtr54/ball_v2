@@ -4,14 +4,6 @@ from tkinter import *
 from customtkinter import *
 import pygame,sys
 from pygame.locals import *
-root = CTk()
-resolution="500x500"
-root.geometry(resolution)
-root.title("GOD DAMNIT")
-BackgroundMainMenu=PhotoImage(file = "assets/ball2.png")
-#test
-label1 = Label( root, image = BackgroundMainMenu) 
-label1.place(x = 0, y = 0) 
 
 #data
 data={
@@ -19,6 +11,21 @@ data={
         'screen_height':720,
         'speed':60
     }
+try:
+    with open('settings.txt') as setfile:
+        data=json.load(setfile)
+except:
+    pass
+
+root = CTk()
+resolution=str(str(data['screen_width'])+'x'+str(data['screen_height']))
+root.geometry(resolution)
+root.title("GOD DAMNIT")
+BackgroundMainMenu=PhotoImage(file = "assets/ball2.png")
+#test
+label1 = Label( root, image = BackgroundMainMenu) 
+label1.place(x = 0, y = 0) 
+
   
 label2 = Label( root, text = "Welcome") 
 label2.pack(pady = 50) 

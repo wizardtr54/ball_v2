@@ -1,1 +1,1 @@
-{"screen_width": 1280, "screen_height": 720, "speed": 120}
+{"screen_width": 1280, "screen_height": 720, "scr": "1920x1080", "speed": 60}

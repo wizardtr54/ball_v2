@@ -4,11 +4,12 @@ from tkinter import *
 from customtkinter import *
 import pygame,sys
 from pygame.locals import *
-
+from PIL import *
 #data defaults
 data={
         'screen_width':1280,
         'screen_height':720,
+        'scr':'1280x720',
         'speed':60
     }
 try:
@@ -19,12 +20,12 @@ except:
         json.dump(data,setfile)
 
 root = CTk()
-resolution=str(str(data['screen_width'])+'x'+str(data['screen_height']))
+resolution=data['scr']
 root.geometry(resolution)
 root.title("GOD DAMNIT")
-BackgroundMainMenu=PhotoImage(file = "assets/ball2.png")
+BackgroundMainMenu=Ctk.CTkImage(dark_image= Image.open("assets/ball2.png"),size=(scrw,scrh))
 #test
-label1 = Label( root, image = BackgroundMainMenu) 
+label1 = Ctk.CTkLabel( root, image = BackgroundMainMenu,text="")
 label1.place(x = 0, y = 0) 
 
   
@@ -323,19 +324,31 @@ def play():
         pygame.display.update()
     pygame.display.quit()
     pygame.quit()
+
+def optionmenu_callback(choice):
+    print(choice)
+    data['scr']=choice
+
+combobox = Ctk.CTkOptionMenu(master=root,
+                                       values=["1280x720","1920x1080",'800x500'],
+                                       command=optionmenu_callback)
+combobox.pack(padx=20, pady=10)
+
+
 # Create Frame 
 
-frame1 = Frame(root) 
-frame1.pack() 
+
+
 
 # Add buttons 
-button1 = Ctk.CTkButton(frame1,text="Exit",command=button_exit) 
+button1 = Ctk.CTkButton(master=root,corner_radius=5,border_spacing=10,text="Exit",command=button_exit) 
 button1.pack() 
 
-button2 = Ctk.CTkButton(frame1, text = "Start",command=play) 
+button2 = Ctk.CTkButton(root,corner_radius=5,border_spacing=10, text = "Start",command=play) 
 button2.pack() 
   
-button3 = Ctk.CTkButton( frame1, text = "Reset") 
+button3 = Ctk.CTkButton(root,corner_radius=5, text = "Reset",border_spacing=10) 
 button3.pack()
+
 
 root.mainloop()

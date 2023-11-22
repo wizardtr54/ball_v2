@@ -10,7 +10,7 @@ data={
         'screen_width':1280,
         'screen_height':720,
         'scr':'1280x720',
-        'speed':60
+        'speed':80
     }
 try:
     with open('settings.txt') as setfile:
@@ -18,7 +18,8 @@ try:
 except:
     with open('settings.txt','w') as setfile:
         json.dump(data,setfile)
-
+scrw=data['screen_width']
+scrh=data['screen_height']
 root = CTk()
 resolution=data['scr']
 root.geometry(resolution)
@@ -36,7 +37,7 @@ def button_exit():
     with open('settings.txt','w') as setfile:
         json.dump(data,setfile)
     sys.exit(0)
-#ttry
+
 def play():
     data={'screen_width':1280,'screen_height':720,'speed':60}    
     try:

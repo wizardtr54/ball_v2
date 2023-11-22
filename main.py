@@ -36,7 +36,7 @@ def button_exit():
     with open('settings.txt','w') as setfile:
         json.dump(data,setfile)
     sys.exit(0)
-
+#ttry
 def play():
     data={'screen_width':1280,'screen_height':720,'speed':60}    
     try:

@@ -10,7 +10,7 @@ data={
         'screen_width':1280,
         'screen_height':720,
         'scr':'1280x720',
-        'speed':140
+        'speed':90
     }
 try:
     with open('settings.txt') as setfile:

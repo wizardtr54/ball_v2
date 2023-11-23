@@ -10,7 +10,7 @@ data={
         'screen_width':1280,
         'screen_height':720,
         'scr':'1280x720',
-        'speed':80
+        'speed':140
     }
 try:
     with open('settings.txt') as setfile:
@@ -18,10 +18,12 @@ try:
 except:
     with open('settings.txt','w') as setfile:
         json.dump(data,setfile)
-scrw=data['screen_width']
-scrh=data['screen_height']
+ResolutionList=data['scr']
+ResolutionList=ResolutionList.split('x')
+scrw=int(ResolutionList[0])
+scrh=int(ResolutionList[1])
 root = CTk()
-resolution=data['scr']
+resolution=ResolutionList[0]+'x'+ResolutionList[1]
 root.geometry(resolution)
 root.title("GOD DAMNIT")
 BackgroundMainMenu=Ctk.CTkImage(dark_image= Image.open("assets/ball2.png"),size=(scrw,scrh))
@@ -348,7 +350,7 @@ button1.pack()
 button2 = Ctk.CTkButton(root,corner_radius=5,border_spacing=10, text = "Start",command=play) 
 button2.pack() 
   
-button3 = Ctk.CTkButton(root,corner_radius=5, text = "Reset",border_spacing=10) 
+button3 = Ctk.CTkButton(root,corner_radius=5, text = "something",border_spacing=10) 
 button3.pack()
 
 

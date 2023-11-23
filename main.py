@@ -41,15 +41,15 @@ def button_exit():
     sys.exit(0)
 
 def play():
-    data={'screen_width':1280,'screen_height':720,'speed':60}    
+    data={"screen_width": 1280, "screen_height": 720, "scr": "1280x720", "speed": 90}  
     try:
         with open('settings.txt') as setfile:
             data=json.load(setfile)
     except:
         pass
     pygame.init()
-    screen_width = data['screen_width']
-    screen_height = data['screen_height']
+    screen_width = scrw
+    screen_height = scrh
     screen = pygame.display.set_mode((screen_width,screen_height))
     pygame.display.set_caption('Brick-slayer')
 
@@ -336,10 +336,6 @@ combobox = Ctk.CTkOptionMenu(master=root,
                                        values=["1280x720","1920x1080",'800x500'],
                                        command=optionmenu_callback)
 combobox.pack(padx=20, pady=10)
-
-
-# Create Frame 
-
 
 
 
